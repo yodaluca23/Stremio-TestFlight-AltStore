@@ -1,0 +1,70 @@
+name: Update Repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch latest metadata from Archive.org
+        run: |
+          curl -s "https://archive.org/metadata/Stremio-iOS-TestFlight" -o metadata.json
+
+      - name: Extract latest IPA details
+        run: |
+          LATEST_FILE=$(jq -r '.files | map(select(.format == "iOS App Store Package")) | max_by(.mtime) | .name' metadata.json)
+          FILE_SIZE=$(jq -r --arg FILE "$LATEST_FILE" '.files[] | select(.name == $FILE) | .size' metadata.json)
+          DOWNLOAD_URL="https://archive.org/download/Stremio-iOS-TestFlight/$LATEST_FILE"
+          VERSION_DATE=$(date -d @$(jq -r '.item_last_updated' metadata.json) +"%Y-%m-%d")
+          VERSION=$(echo "$LATEST_FILE" | grep -oP '(?<=com.stremio.one-)[0-9]+\.[0-9]+\.[0-9]+')
+          echo "LATEST_FILE=$LATEST_FILE" >> $GITHUB_ENV
+          echo "FILE_SIZE=$FILE_SIZE" >> $GITHUB_ENV
+          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
+          echo "VERSION_DATE=$VERSION_DATE" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Download Latest IPA
+        run: |
+          wget "$DOWNLOAD_URL" -O latest.ipa
+
+      - name: Extract Entitlements
+        run: |
+          mkdir -p extracted
+          unzip latest.ipa -d extracted
+          (codesign -d --entitlements :- extracted/Payload/Stremio.app | xmllint --format - | \
+           sed -n 's/.*<key>\(.*\)<\/key>.*/\1/p'; \
+           for EXT in extracted/Payload/Stremio.app/PlugIns/*.appex; do \
+             [ -d "$EXT" ] && codesign -d --entitlements :- "$EXT" | xmllint --format - | \
+             sed -n 's/.*<key>\(.*\)<\/key>.*/\1/p'; \
+           done) | sort | uniq | jq -R -s 'split("\n") | map(select(length > 0))' > Entitlements.json
+
+      - name: Extract Privacy Descriptions
+        run: |
+          echo "{" > Privacy.json
+          find extracted -name "Info.plist" | while read file; do
+            plutil -p "$file" 2>/dev/null | grep -E "NS.*Description" | \
+            sed -E 's/^\s*\"([^\"]+)\".*\"(.*)\"$/"\1": "\2",/';
+          done | sed 's/ =>/:/g' | sed 's/,$//' >> Privacy.json
+          echo "}" >> Privacy.json
+
+      - name: Update AltStore Repo JSON
+        run: |
+          jq --arg ver "$VERSION" --arg vdate "$VERSION_DATE" --arg url "$DOWNLOAD_URL" \
+             --argjson size "$FILE_SIZE" --argjson ents "$(cat Entitlements.json)" \
+             --argjson priv "$(cat Privacy.json)" \
+             '.apps[0] |= . + {version: $ver, versionDate: $vdate, downloadURL: $url, size: $size, \
+             appPermissions: {entitlements: $ents, privacy: $priv}}' AltStore\ Repo.json > updated.json
+          mv updated.json AltStore\ Repo.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add AltStore\ Repo.json
+          git commit -m "Update AltStore Repo with latest version"
+          git push
