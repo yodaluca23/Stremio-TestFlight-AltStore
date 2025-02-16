@@ -1,0 +1,62 @@
+{
+    "name": "Stremio TestFlight",
+    "subtitle": "Stremio App From TestFlight",
+    "identifier": "com.stremio.one",
+    "sourceURL": "https://raw.githubusercontent.com/yodaluca23/Stremio-TestFlight-AltStore/main/AltStore%20Repo.json",
+    "website": "https://www.stremio.com",
+    "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
+    "META": {
+        "repoName": "Stremio",
+        "repoIcon": "https://www.stremio.com/website/stremio-logo-small.png"
+    },
+    "apps": [
+        {
+            "name": "Stremio",
+            "bundleIdentifier": "com.stremio.one",
+            "developerName": "Stremio",
+            "contact": {
+                "web": "https://www.stremio.com"
+            },
+            "version": "1.0.1",
+            "versionDate": "2025-2-16",
+            "size": 54082124,
+            "minOSVersion": "13.0",
+            "changelog": "Please do not report about P2P addons not working as it is intended and NOT a bug. Use Github to submit issues as I could get back to you if I have further questions\n\nNew KSPlayer implementation:\nYou could switch back to VLC player as KSPlayer implementation is Unstable for now.",
+            "versionDescription": "Please do not report about P2P addons not working as it is intended and NOT a bug. Use Github to submit issues as I could get back to you if I have further questions\n\nNew KSPlayer implementation:\nYou could switch back to VLC player as KSPlayer implementation is Unstable for now.",
+            "subtitle": "Stremio- Freedom to Stream",
+            "versions": [
+                {
+                    "version": "1.0.1",
+                    "date": "2025-2-16",
+                    "localizedDescription": "Please do not report about P2P addons not working as it is intended and NOT a bug. Use Github to submit issues as I could get back to you if I have further questions\n\nNew KSPlayer implementation:\nYou could switch back to VLC player as KSPlayer implementation is Unstable for now.",
+                    "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build2.ipa",
+                    "size": 54082124,
+                    "minOSVersion": "13.0"
+                },
+                {
+                    "version": "1.0.0",
+                    "date": "2025-2-14",
+                    "localizedDescription": "Changes:\n* iOS 16 and lower crashes when add-on fetches URL with 'l' character path in it:\nFixed by removing force unwrapping of\nString to URL.\nFixed?: Discover becomes empty after using filters\nRefactor: New design for Filter in discover, library, and etc.\n\nTesting:\nPlease from now on use both GitHub and Feedback(for sending crash logs automatically with GitHub name) so that way it would be easier to communicate and test.\nPlayer will be updated in 1.0.1 version.",
+                    "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.0-Build35.ipa",
+                    "size": 41394390,
+                    "minOSVersion": "13.0"
+                }
+            ],
+            "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build2.ipa",
+            "localizedDescription": "Stremio App From TestFlight"
+            "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
+            "tintColor": "#5956E3",
+            "appPermissions": {
+                "entitlements": [
+                  "application-identifier",
+                  "beta-reports-active",
+                  "com.apple.developer.associated-domains",
+                  "com.apple.developer.team-identifier",
+                  "get-task-allow"
+                ],
+                "privacy": {}
+            },
+            "beta": true
+        }
+    ]
+}
