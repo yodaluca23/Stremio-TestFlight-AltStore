@@ -54,11 +54,13 @@ jobs:
 
       - name: Update AltStore Repo JSON
         run: |
-          jq --arg ver "$VERSION" --arg vdate "$VERSION_DATE" --arg url "$DOWNLOAD_URL" \
-             --argjson size "$FILE_SIZE" --argjson ents "$(cat Entitlements.json)" \
-             --argjson priv "$(cat Privacy.json)" \
-             '.apps[0] |= . + {version: $ver, versionDate: $vdate, downloadURL: $url, size: $size, \
-             appPermissions: {entitlements: $ents, privacy: $priv}}' AltStore\ Repo.json > updated.json
+          jq --arg ver "$VERSION" \
+           --arg vdate "$VERSION_DATE" \
+           --arg url "$DOWNLOAD_URL" \
+           --argjson size "$FILE_SIZE" \
+           --argjson ents "$(cat Entitlements.json)" \
+           --argjson priv "$(cat Privacy.json)" \
+           '.apps[0] |= (. + {version: $ver, versionDate: $vdate, downloadURL: $url, size: $size, appPermissions: {entitlements: $ents, privacy: $priv}})' AltStore\ Repo.json > updated.json
           mv updated.json AltStore\ Repo.json
 
       - name: Commit and Push Changes
