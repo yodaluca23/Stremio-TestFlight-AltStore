@@ -2,7 +2,7 @@
     "name": "Stremio TestFlight",
     "subtitle": "Stremio App From TestFlight",
     "identifier": "com.stremio.one",
-    "sourceURL": "https://raw.githubusercontent.com/yodaluca23/Stremio-TestFlight-AltStore/refs/heads/main/AltStore%20Repo.json",
+    "sourceURL": "https://raw.githubusercontent.com/yodaluca23/Stremio-TestFlight-AltStore/main/AltStore%20Repo.json",
     "website": "https://www.stremio.com",
     "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
     "META": {
@@ -43,16 +43,16 @@
                 }
             ],
             "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build2.ipa",
-            "localizedDescription": "Stremio App From TestFlight"
+            "localizedDescription": "Stremio App From TestFlight",
             "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
             "tintColor": "#5956E3",
             "appPermissions": {
                 "entitlements": [
-                  "application-identifier",
-                  "beta-reports-active",
-                  "com.apple.developer.associated-domains",
-                  "com.apple.developer.team-identifier",
-                  "get-task-allow"
+                    "application-identifier",
+                    "beta-reports-active",
+                    "com.apple.developer.associated-domains",
+                    "com.apple.developer.team-identifier",
+                    "get-task-allow"
                 ],
                 "privacy": {}
             },
