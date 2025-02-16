@@ -61,12 +61,9 @@ jobs:
            --argjson ents "$(cat Entitlements.json)" \
            --argjson priv "$(cat Privacy.json)" \
            '.apps[0] |= (. + {version: $ver, versionDate: $vdate, downloadURL: $url, size: $size, appPermissions: {entitlements: $ents, privacy: $priv}})' AltStore\ Repo.json > updated.json
-          mv updated.json AltStore\ Repo.json
 
-      - name: Commit and Push Changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add AltStore\ Repo.json
-          git commit -m "Update AltStore Repo with latest version"
-          git push
+      - name: Upload Updated JSON as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: updated-altstore-repo
+          path: updated.json
