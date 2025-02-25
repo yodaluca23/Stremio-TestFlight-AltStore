@@ -19,18 +19,18 @@
       },
       "version": "1.0.1",
       "versionDate": "2025-2-25",
-      "size": 64671201,
+      "size": 64679959,
       "minOSVersion": "13.0",
-      "changelog": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
-      "versionDescription": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
+      "changelog": "Fixes continue watching issues",
+      "versionDescription": "Fixes continue watching issues",
       "subtitle": "Stremio- Freedom to Stream",
       "versions": [
         {
           "version": "1.0.1",
           "date": "2025-2-25",
-          "localizedDescription": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
-          "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build5.ipa",
-          "size": 64671201,
+          "localizedDescription": "Fixes continue watching issues",
+          "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build6.ipa",
+          "size": 64679959,
           "minOSVersion": "13.0"
         },
         {
@@ -58,7 +58,7 @@
           "minOSVersion": "13.0"
         }
       ],
-      "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build5.ipa",
+      "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build6.ipa",
       "localizedDescription": "Stremio App From TestFlight",
       "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
       "tintColor": "#5956E3",
