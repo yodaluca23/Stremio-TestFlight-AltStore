@@ -18,13 +18,21 @@
         "web": "https://www.stremio.com"
       },
       "version": "1.0.1",
-      "versionDate": "2025-2-23",
-      "size": 64650827,
+      "versionDate": "2025-2-25",
+      "size": 64671201,
       "minOSVersion": "13.0",
-      "changelog": "* feat(player): adapt player to macOS/iPadOS cursor \\n* refactor: Library dynamic filters. (Now shows channels and etc in filter)\\n* refactor(MetaItem) (Click and hold continue watching, library, and other catalog items to see dropdown)",
-      "versionDescription": "* feat(player): adapt player to macOS/iPadOS cursor \\n* refactor: Library dynamic filters. (Now shows channels and etc in filter)\\n* refactor(MetaItem) (Click and hold continue watching, library, and other catalog items to see dropdown)",
+      "changelog": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
+      "versionDescription": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
       "subtitle": "Stremio- Freedom to Stream",
       "versions": [
+        {
+          "version": "1.0.1",
+          "date": "2025-2-25",
+          "localizedDescription": "KSPlayer now shows embedded subtitles properly\\niPhone 11 Pro Max, iPhone XS Max devices would show huge gap in discover Rotation issue in KSPlayer\\n(Can be disabled in iOS Settings -> Apps -> Stremio)",
+          "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build5.ipa",
+          "size": 64671201,
+          "minOSVersion": "13.0"
+        },
         {
           "version": "1.0.1",
           "date": "2025-2-23",
@@ -50,7 +58,7 @@
           "minOSVersion": "13.0"
         }
       ],
-      "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build3.ipa",
+      "downloadURL": "https://archive.org/download/Stremio-iOS-TestFlight/com.stremio.one-1.0.1-Build5.ipa",
       "localizedDescription": "Stremio App From TestFlight",
       "iconURL": "https://www.stremio.com/website/stremio-logo-small.png",
       "tintColor": "#5956E3",
